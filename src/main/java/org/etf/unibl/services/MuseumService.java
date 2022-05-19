@@ -10,21 +10,15 @@ import java.util.List;
 @Service
 public class MuseumService {
 
+    private final VirtualTourRepository virtualTourRepository;
     private final MuseumRepository repository;
-    private final VirtualTourRepository tourRepository;
 
-    public MuseumService(MuseumRepository repository, VirtualTourRepository tourRepository) {
+    public MuseumService(VirtualTourRepository virtualTourRepository, MuseumRepository repository) {
+        this.virtualTourRepository = virtualTourRepository;
         this.repository = repository;
-        this.tourRepository = tourRepository;
     }
 
     public List<MuseumEntity> getAllMuseumsAndTours(){
-        List<MuseumEntity> museums = repository.findAll();
-        for(MuseumEntity museum : museums){
-            VirtualTourRepository virtualTour = (VirtualTourRepository)tourRepository.getById(museum.getId());
-
-        }
-        return repository.findAll();
+         return repository.findAll();
     }
-
 }

@@ -1,8 +1,10 @@
 package org.etf.unibl.models.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -27,5 +29,9 @@ public class AddressEntity {
     @Basic
     @Column(name = "number")
     private String number;
+
+    @OneToMany(mappedBy = "address")
+    @JsonIgnore
+    private List<MuseumEntity> museums;
 
 }

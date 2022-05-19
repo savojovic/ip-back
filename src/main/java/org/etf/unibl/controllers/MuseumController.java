@@ -2,7 +2,6 @@ package org.etf.unibl.controllers;
 
 import org.etf.unibl.models.entities.MuseumEntity;
 import org.etf.unibl.services.MuseumService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +21,6 @@ public class MuseumController {
 
     @GetMapping
     List<MuseumEntity> getAll(){
-        return museumService.getAll();
+        return museumService.getAllMuseumsAndTours();
     }
 }

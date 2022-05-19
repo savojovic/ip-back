@@ -14,13 +14,14 @@ public class LogEntity {
     @Column(name = "Id_log")
     private Integer idLog;
     @Basic
-    @Column(name = "user_id")
-    private Integer userId;
-    @Basic
     @Column(name = "action")
     private String action;
     @Basic
     @Column(name = "date")
     private Timestamp date;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
+    private UserEntity user;
 
 }

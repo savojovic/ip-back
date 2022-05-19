@@ -12,11 +12,13 @@ public class MuseumticketEntity {
     @Id
     @Column(name = "ticked_number")
     private Integer tickedNumber;
-    @Basic
-    @Column(name = "user_Id")
-    private Integer userId;
-    @Basic
-    @Column(name = "museum_Id")
-    private Integer museumId;
+
+    @ManyToOne
+    @JoinColumn(name = "user_Id", referencedColumnName = "id", nullable = false)
+    private UserEntity user;
+
+    @ManyToOne
+    @JoinColumn(name = "museum_Id", referencedColumnName = "id", nullable = false)
+    private MuseumEntity museum;
 
 }

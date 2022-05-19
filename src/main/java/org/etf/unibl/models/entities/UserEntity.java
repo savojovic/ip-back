@@ -1,12 +1,14 @@
 package org.etf.unibl.models.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
-@Table(name = "user", schema = "ip", catalog = "")
+@Table(name = "user")
 public class UserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -26,7 +28,7 @@ public class UserEntity {
     private String passHash;
     @Basic
     @Column(name = "is_admin")
-    private Boolean isAdmin;
+    private Byte isAdmin;
     @Basic
     @Column(name = "token")
     private String token;
@@ -34,12 +36,12 @@ public class UserEntity {
     @Column(name = "active_time")
     private String activeTime;
 
-    public Boolean getAdmin() {
-        return isAdmin;
-    }
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    private List<LogEntity> logs;
 
-    public void setAdmin(Boolean admin) {
-        isAdmin = admin;
-    }
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    private List<MuseumticketEntity> museumtickets;
 
 }

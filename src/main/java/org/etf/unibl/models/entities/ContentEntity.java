@@ -30,8 +30,9 @@ public class ContentEntity {
     @Basic
     @Column(name = "Vid")
     private String vid;
-    @Basic
-    @Column(name = "virtualtour_museum_id")
-    private Integer virtualtourMuseumId;
+
+    @ManyToOne
+    @JoinColumn(name = "virtualtour_museum_id", referencedColumnName = "museum_id", nullable = false)
+    private VirtualtourEntity virtualtourEntity;
 
 }
