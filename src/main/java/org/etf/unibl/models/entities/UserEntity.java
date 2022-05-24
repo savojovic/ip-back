@@ -43,5 +43,4 @@ public class UserEntity {
     @OneToMany(mappedBy = "user")
     @JsonIgnore
     private List<MuseumticketEntity> museumtickets;
-
 }
