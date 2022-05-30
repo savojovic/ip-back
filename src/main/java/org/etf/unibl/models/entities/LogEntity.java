@@ -19,7 +19,6 @@ public class LogEntity {
     @Basic
     @Column(name = "date")
     private Timestamp date;
-
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
     private UserEntity user;

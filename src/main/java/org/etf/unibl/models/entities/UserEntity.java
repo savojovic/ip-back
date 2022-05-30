@@ -8,7 +8,7 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name = "user")
+@Table(name = "user", schema = "ip", catalog = "")
 public class UserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -35,12 +35,11 @@ public class UserEntity {
     @Basic
     @Column(name = "active_time")
     private String activeTime;
-
     @OneToMany(mappedBy = "user")
     @JsonIgnore
     private List<LogEntity> logs;
-
     @OneToMany(mappedBy = "user")
     @JsonIgnore
     private List<MuseumticketEntity> museumtickets;
+
 }

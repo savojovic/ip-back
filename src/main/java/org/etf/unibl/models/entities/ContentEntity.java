@@ -1,8 +1,10 @@
 package org.etf.unibl.models.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -31,8 +33,9 @@ public class ContentEntity {
     @Column(name = "Vid")
     private String vid;
 
-    @ManyToOne
-    @JoinColumn(name = "virtualtour_museum_id", referencedColumnName = "museum_id", nullable = false)
-    private VirtualtourEntity virtualtourEntity;
+    @OneToMany(mappedBy = "content")
+    @JsonIgnore
+    private List<VirtualtourEntity> tours;
+
 
 }
