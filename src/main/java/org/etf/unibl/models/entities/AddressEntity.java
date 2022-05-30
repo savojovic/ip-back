@@ -2,11 +2,16 @@ package org.etf.unibl.models.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
-@Data
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @Entity
 @Table(name = "address", schema = "ip", catalog = "")
 public class AddressEntity {
@@ -32,6 +37,19 @@ public class AddressEntity {
 
     @OneToMany(mappedBy = "address")
     @JsonIgnore
+    @ToString.Exclude
     private List<MuseumEntity> museums;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        AddressEntity that = (AddressEntity) o;
+        return idAddress != null && Objects.equals(idAddress, that.idAddress);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 }

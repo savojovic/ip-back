@@ -1,10 +1,15 @@
 package org.etf.unibl.models.entities;
 
 import lombok.*;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import java.util.Objects;
 
-@Data
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @Entity
 @Table(name = "museumticket", schema = "ip", catalog = "")
 public class MuseumticketEntity {
@@ -21,4 +26,16 @@ public class MuseumticketEntity {
     @JoinColumn(name = "museum_Id", referencedColumnName = "id", nullable = false)
     private MuseumEntity museum;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        MuseumticketEntity that = (MuseumticketEntity) o;
+        return tickedNumber != null && Objects.equals(tickedNumber, that.tickedNumber);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 }

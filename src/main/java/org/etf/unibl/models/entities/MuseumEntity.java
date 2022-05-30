@@ -2,13 +2,18 @@ package org.etf.unibl.models.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
-@Data
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 @Entity
-@Table(name = "museum", schema = "ip", catalog = "")
+@Table(name = "museum")
 public class MuseumEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -31,12 +36,26 @@ public class MuseumEntity {
     @JoinColumn(name = "address_id_address", referencedColumnName = "id_address", nullable = false)
     private AddressEntity address;
 
-    @OneToMany(mappedBy = "museum")
     @JsonIgnore
+    @OneToMany(mappedBy = "museum")
+    @ToString.Exclude
     private List<MuseumticketEntity> museumtickets;
 
-    @OneToMany(mappedBy = "museum")
     @JsonIgnore
+    @OneToMany(mappedBy = "museum")
+    @ToString.Exclude
     private List<VirtualtourEntity> virtualtours;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        MuseumEntity that = (MuseumEntity) o;
+        return id != null && Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 }
