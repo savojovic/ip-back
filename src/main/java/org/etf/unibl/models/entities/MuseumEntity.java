@@ -1,6 +1,5 @@
 package org.etf.unibl.models.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -31,8 +30,8 @@ public class MuseumEntity {
     @JoinColumn(name = "address_id_address", referencedColumnName = "id_address", nullable = false)
     private AddressEntity address;
 
-    @OneToMany(mappedBy = "museumTicket")
-    private List<MuseumticketEntity> museumtickets;
+    @OneToMany(mappedBy = "museum")
+    private List<MuseumTicketEntity> museumtickets;
 
     @OneToMany(mappedBy = "museum")
     private List<VirtualtourEntity> virtualtours;

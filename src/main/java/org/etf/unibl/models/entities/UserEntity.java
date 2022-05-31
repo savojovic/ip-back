@@ -47,7 +47,7 @@ public class UserEntity {
 
     @OneToMany(mappedBy = "user")
     @JsonIgnore
-    private List<MuseumticketEntity> museumtickets;
+    private List<MuseumTicketEntity> museumtickets;
 
     @Transient
     private final String ACTIVE_TIME = String.valueOf(0);

@@ -3,13 +3,14 @@ package org.etf.unibl.services.impl;
 import org.etf.unibl.models.entities.MuseumEntity;
 import org.etf.unibl.repositories.MuseumRepository;
 import org.etf.unibl.repositories.VirtualTourRepository;
+import org.etf.unibl.services.MuseumService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class MuseumServiceImpl {
+public class MuseumServiceImpl implements MuseumService {
     private final MuseumRepository repository;
 
     public MuseumServiceImpl(MuseumRepository repository) {
