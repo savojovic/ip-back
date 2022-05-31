@@ -10,12 +10,9 @@ import java.util.Optional;
 
 @Service
 public class MuseumServiceImpl {
-
-    private final VirtualTourRepository virtualTourRepository;
     private final MuseumRepository repository;
 
-    public MuseumServiceImpl(VirtualTourRepository virtualTourRepository, MuseumRepository repository) {
-        this.virtualTourRepository = virtualTourRepository;
+    public MuseumServiceImpl(MuseumRepository repository) {
         this.repository = repository;
     }
 

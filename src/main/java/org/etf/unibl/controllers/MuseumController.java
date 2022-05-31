@@ -27,7 +27,7 @@ public class MuseumController {
                                   @RequestParam(value = MUS_NAME_QUERY, required = false, defaultValue = EMPTY_STRING) String name,
                                   @RequestParam(value = ID_QUERY, required = false, defaultValue = EMPTY_STRING) String id) {
 
-        //Requesting museum by id, if id is not empty
+        //Requesting museum by id, id is not empty
         if(!EMPTY_STRING.equals(id)){
             return Collections.singletonList(museumService.getMuseumById(Integer.parseInt(id)));
         }
