@@ -6,6 +6,7 @@ import org.etf.unibl.repositories.VirtualTourRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MuseumServiceImpl {
@@ -19,14 +20,16 @@ public class MuseumServiceImpl {
     }
 
     public List<MuseumEntity> getAll(){
-       List<MuseumEntity> museumEntities = repository.findAll();
-        return museumEntities;
+        return repository.findAll();
     }
 
+    public MuseumEntity getMuseumById(Integer id){
+        Optional<MuseumEntity> museum = repository.findById(id);
+        return museum.orElse(null);
+    }
     public List<MuseumEntity> getMuseumsByCity(String city){
         return repository.findAllByAddress_City(city);
     }
-
     public List<MuseumEntity> getMuseumsByName(String name) {
         return repository.findAllByName(name);
     }

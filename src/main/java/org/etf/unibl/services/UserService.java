@@ -1,5 +1,7 @@
 package org.etf.unibl.services;
 
-public interface UserService {
+import org.etf.unibl.models.entities.UserEntity;
 
+public interface UserService {
+    void saveUser(UserEntity user);
 }

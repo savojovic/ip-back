@@ -11,7 +11,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @CrossOrigin
 @AllArgsConstructor
-public class JwtController {
+public class LoginController {
     private final UserDetailServiceImpl userDetailsService;
     private final AuthenticationManager authenticationManager;
     private final TokenManager tokenManager;
@@ -28,8 +27,6 @@ public class JwtController {
     @PostMapping("/login")
     public ResponseEntity<ResponseModel> createToken(@RequestBody RequestModel request) throws Exception {
         try {
-            String username = request.getUsername();
-            String password = request.getPassword();
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
         } catch (DisabledException e) {
             throw new Exception("USER_DISABLED", e);
