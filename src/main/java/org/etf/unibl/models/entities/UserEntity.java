@@ -45,10 +45,6 @@ public class UserEntity {
     @JsonIgnore
     private List<LogEntity> logs;
 
-    @OneToMany(mappedBy = "user")
-    @JsonIgnore
-    private List<MuseumTicketEntity> museumtickets;
-
     @Transient
     private final String ACTIVE_TIME = String.valueOf(0);
     @Transient

@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+//TODO: generate jwt without expiration for bank
+
 @RestController
 @AllArgsConstructor
 //@PreAuthorize("hasAuthority('BANK')")
@@ -31,5 +33,4 @@ public class BankController {
         MuseumTicketEntity ticket = new MuseumTicketEntity(Integer.parseInt(ticketNumber),museum,name,surname);
         museumTicketService.saveTicket(ticket);
     }
-
 }
