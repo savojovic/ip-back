@@ -25,8 +25,7 @@ public class MuseumController {
     List<MuseumEntity> getByParam(@RequestParam(value = "city", required = false, defaultValue = "") String city,
                                   @RequestParam(value = "name", required = false, defaultValue = "") String name){
         if("".equals(city)&& "".equals(name)){
-            List<MuseumEntity> museums = museumService.getAllMuseumsAndTours();
-            return museums;
+            return museumService.getAll();
         }else if("".equals(name)){
             return museumService.getMuseumsByCity(city);
         }else if("".equals(city)){
@@ -37,7 +36,7 @@ public class MuseumController {
     }
     @GetMapping("/tours")
     List<VirtualtourEntity> getTours(){
-        List<MuseumEntity> museumEntities = museumService.getAllMuseumsAndTours();
+        List<MuseumEntity> museumEntities = museumService.getAll();
         MuseumEntity museum = museumEntities.get(0);
         List<VirtualtourEntity> tours = museum.getVirtualtours();
         return tours;

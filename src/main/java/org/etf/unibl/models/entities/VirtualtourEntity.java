@@ -1,5 +1,6 @@
 package org.etf.unibl.models.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -7,7 +8,7 @@ import java.sql.Timestamp;
 
 @Data
 @Entity
-@Table(name = "virtualtour", schema = "ip", catalog = "")
+@Table(name = "virtualtour")
 public class VirtualtourEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -19,11 +20,14 @@ public class VirtualtourEntity {
     @Basic
     @Column(name = "duration")
     private String duration;
+
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "content_id", referencedColumnName = "id", nullable = false)
     private ContentEntity content;
+
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "museum_id", referencedColumnName = "id", nullable = false)
     private MuseumEntity museum;
-
 }

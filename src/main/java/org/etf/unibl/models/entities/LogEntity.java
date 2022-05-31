@@ -7,7 +7,7 @@ import java.sql.Timestamp;
 
 @Data
 @Entity
-@Table(name = "log", schema = "ip", catalog = "")
+@Table(name = "log")
 public class LogEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id

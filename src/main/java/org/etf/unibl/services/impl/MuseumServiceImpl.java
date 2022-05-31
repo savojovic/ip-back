@@ -18,9 +18,9 @@ public class MuseumServiceImpl {
         this.repository = repository;
     }
 
-    public List<MuseumEntity> getAllMuseumsAndTours(){
-       // List<MuseumEntity> museumEntities = repository.findAll();
-        return repository.findAll();
+    public List<MuseumEntity> getAll(){
+       List<MuseumEntity> museumEntities = repository.findAll();
+        return museumEntities;
     }
 
     public List<MuseumEntity> getMuseumsByCity(String city){
