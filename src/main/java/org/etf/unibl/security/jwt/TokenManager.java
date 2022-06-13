@@ -18,7 +18,7 @@ public class TokenManager implements Serializable {
     /**
      *
      */
-    private static final long serialVersionUID = 7008375124389347049L; public static final long TOKEN_VALIDITY = 10 * 60 * 60;
+    private static final long serialVersionUID = 7008375124389347049L;
     @Value("${secret}")
     private String jwtSecret;
     @Value("${expiration}")
@@ -29,6 +29,7 @@ public class TokenManager implements Serializable {
                 .setId(userDetails.getUser().getId().toString())
                 .setSubject(userDetails.getUsername())
                 .claim("role", userDetails.getRole().toString())
+                .claim("status", userDetails.getStatus().toString())
                 .setExpiration(new Date(System.currentTimeMillis() + Integer.parseInt(expiration)))
                 .signWith(SignatureAlgorithm.HS512, jwtSecret)
                 .compact();

@@ -40,7 +40,9 @@ public class UserEntity {
     @Basic
     @Column(name="email")
     private String email;
-
+    @Basic
+    @Column(name = "status")
+    private String status;
     @OneToMany(mappedBy = "user")
     @JsonIgnore
     private List<LogEntity> logs;

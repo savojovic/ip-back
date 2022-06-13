@@ -2,7 +2,7 @@ package org.etf.unibl.controllers;
 
 import lombok.AllArgsConstructor;
 import org.etf.unibl.models.entities.UserEntity;
-import org.etf.unibl.repositories.UserRepository;
+import org.etf.unibl.models.enums.Status;
 import org.etf.unibl.services.UserService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,6 +27,7 @@ public class RegisterController {
                     @RequestParam(value = EMAIL_QUERY) String email){
 
         UserEntity user = new UserEntity(name,surname,username,password,email);
+        user.setStatus(Status.PENDING.toString());
         userService.saveUser(user);
     }
 }
