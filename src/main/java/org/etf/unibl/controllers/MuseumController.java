@@ -22,6 +22,14 @@ public class MuseumController {
         this.museumService = museumService;
     }
 
+    @PostMapping("/museums")
+    String addNewMuseum(@RequestParam(value = CITY_QUERY)String city){
+        return city;
+    }
+    //todo: delete street and number from address table in db and geo_location from museum
+    //todo: write method to save a museum into the database
+    //name, phone, type, country, region, city
+
     @GetMapping("/museums")
     List<MuseumEntity> getByParam(@RequestParam(value = CITY_QUERY, required = false, defaultValue = EMPTY_STRING) String city,
                                   @RequestParam(value = MUS_NAME_QUERY, required = false, defaultValue = EMPTY_STRING) String name,
