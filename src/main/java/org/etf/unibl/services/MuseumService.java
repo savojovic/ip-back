@@ -9,4 +9,5 @@ public interface MuseumService {
     List<MuseumEntity> getMuseumsByCity(String city);
     List<MuseumEntity> getMuseumsByName(String name);
     List<MuseumEntity> getMuseumsByCityAndName(String city, String name);
+    void saveMuseum(MuseumEntity museum);
 }

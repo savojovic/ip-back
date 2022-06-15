@@ -34,4 +34,9 @@ public class MuseumServiceImpl implements MuseumService {
     public List<MuseumEntity> getMuseumsByCityAndName(String city, String name){
         return repository.findAllByAddress_CityAndName(city, name);
     }
+
+    @Override
+    public void saveMuseum(MuseumEntity museum) {
+        repository.save(museum);
+    }
 }
