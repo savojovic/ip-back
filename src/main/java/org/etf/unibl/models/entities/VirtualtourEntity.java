@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.sql.Timestamp;
 
 @Data
@@ -16,7 +17,7 @@ public class VirtualtourEntity {
     private Integer idTour;
     @Basic
     @Column(name = "start_date")
-    private Timestamp startDate;
+    private Date startDate;
     @Basic
     @Column(name = "duration")
     private String duration;
